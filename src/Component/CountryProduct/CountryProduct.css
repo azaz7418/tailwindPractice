@@ -1,0 +1,18 @@
+.countryProducts{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background-color: rgb(185, 184, 197);
+    min-width: 100vw;
+    min-height: 100vh;
+
+}
+.cProduct{
+    padding: 10px;
+    border: 4px solid red;
+border-radius: 10px;
+}
+.cProduct img{
+height: 250px;
+width: 300px;
+}

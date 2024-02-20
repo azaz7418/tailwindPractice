@@ -1,0 +1,18 @@
+/* .countryName {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  background-color: lightseagreen;
+  padding: 15px;
+  min-height: 100vh;
+  min-width: 100vw;
+
+}
+.countryName div .cn > h2 {
+    border: 3px solid rgb(4, 64, 110);
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    
+} */

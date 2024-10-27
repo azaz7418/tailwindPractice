@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import "./CountryProduct.css";
-
-
+// import "./CountryProduct.css";
 const CountryProduct = () => {
   const { name } = useParams();
   const getRandomMeal = async () => {
@@ -12,9 +10,9 @@ const CountryProduct = () => {
   };
 
   const { data, isError, isLoading } = useQuery({
-    queryKey: ["countryData"],
-    queryFn:  getRandomMeal,
-    staleTime: 60000,
+    queryKey: ["countryData", name],
+    queryFn: getRandomMeal,
+    staleTime: 5000,
   });
   //   console.log({ name, data });
   if (isLoading) {
@@ -24,11 +22,13 @@ const CountryProduct = () => {
     return <>...Page Error...</>;
   }
   return (
-    <div className="countryProducts">
+    <div className="countryProducts  pt-40 px-6 grid grid-cols-3 gap-6 ">
       {data?.map((cp) => (
-        <div className="cProduct" key={cp.idMeal}>
-          <img src={cp.strMealThumb} alt="" />
-          <h3>{cp.strMeal}</h3>
+        <div className=" " key={cp.idMeal}>
+          <div className=" w-96 h-96  text-orange-600 hover:bg-orange-500  hover:text-slate-300 hover:pt-10... shadow-lg rounded-md p-5 align-middle text-center ">
+            <img className=" m-auto rounded-md w-80 h-60" src={cp.strMealThumb} alt="" />
+            <h3 className=" text-xl mt-4 truncate">{cp.strMeal}</h3>
+          </div>
         </div>
       ))}
     </div>

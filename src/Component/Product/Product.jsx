@@ -1,10 +1,7 @@
-import axios from "axios";
 import { useQuery } from "react-query";
+import { getCategories } from "../../ApiList";
 
-const getCategories = async () => {
-  const { data } = await axios.get("/categories.php");
-  return data.categories;
-};
+
 
 // check main.jsx, and this file//
 
@@ -23,7 +20,7 @@ const Product = () => {
 
   return (
     //ekhane categories.map dichili//
-    <div>
+    <div className="pt-40 px-6">
       {data?.map((category) => (
         <div key={category?.idCategory}>
           <h2>{category?.strCategory}</h2>

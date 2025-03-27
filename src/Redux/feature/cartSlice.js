@@ -9,9 +9,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const existingItem = state.items.find((item) => item.idMeal === action.payload.idMeal);
+      //   const isExist = state.items.filter((item) => item.idMeal !== action.payload.idMeal);
 
-      if (!existingItem) {
+      //   if (isExist) {
+      //     state.items.push(action.payload);
+      //   }
+      const isExist = state.items.some((item) => item.idMeal === action.payload.idMeal);
+
+      if (!isExist) {
         state.items.push(action.payload);
       }
     },

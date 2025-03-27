@@ -14,7 +14,7 @@ const Header = () => {
   const navItem = [
     { name: "Home", path: "/" },
     { name: "Product", path: "/product" },
-    { name: "Profile", path: "/profile" },
+    { name: "Cart", path: "/cart" },
     { name: "About", path: "/about" },
   ];
 
@@ -28,7 +28,7 @@ const Header = () => {
             key={index}
               className={({ isActive }) =>
                 ` hover:text-slate-300 transition duration-700 ease-in-out navItem p-0 hover:scale-y-1 hover:origin-bottom hover:-translate-y-2 ${
-                  isActive ? "text-stone-300 scale-y-1" : " text-zinc-500"
+                  isActive ? "text-stone-300 scale-y-1" : " text-white"
                 }  `
               }
               to={item.path}

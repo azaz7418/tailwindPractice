@@ -4,6 +4,7 @@ import LayOut from "./Component/LayOut/LayOut";
 import Product from "./Component/Product/Product";
 import Home from "./Component/Home/Home";
 import CountryProduct from "./Component/CountryProduct/CountryProduct";
+import Cart from "./Component/Cart/Cart";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,8 +21,8 @@ function App() {
           element: <Product></Product>,
         },
         {
-          path: "/profile",
-          element: <div> This is profile</div>,
+          path: "/cart",
+          element: <Cart/>,
         },
         {
           path: "/countryProduct/:name",

@@ -1,17 +1,62 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../Redux/feature/cartSlice";
+
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const removeHandler=(id)=>{
+    dispatch(removeFromCart(id))
+  }
   return (
-    <div>
-      {cartItems.map((item, index) => {
-        return <div key={index}>
-            <div className=" w-96 h-96  text-zinc-700 shadow-lg bg-gray-200 rounded-md p-5 align-middle text-center ">
-            <img className=" m-auto rounded-md w-80 h-60" src={item.strMealThumb} alt="" />
-            <h3 className=" text-xl mt-4 truncate">{item.strMeal}</h3>
-          </div>
-        </div>;
-      })}
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white shadow-md rounded-lg">
+          <thead>
+            <tr className="bg-gray-200 text-gray-700 uppercase text-sm">
+              <th className="py-2 px-4">Image</th>
+              <th className="py-2 px-4">Name</th>
+              <th className="py-2 px-4">Price</th>
+              <th className="py-2 px-4">Quantity</th>
+              <th className="py-2 px-4">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cartItems.length > 0 ? (
+              cartItems.map((item, index) => (
+                <tr key={index} className="border-b">
+                  <td className="py-2 px-4 text-center">
+                    <img
+                      src={item.strMealThumb}
+                      alt={item.strMeal}
+                      className="w-16 h-16 rounded-md mx-auto"
+                    />
+                  </td>
+                  <td className="py-2 px-4 text-center">{item.strMeal}</td>
+                  <td className="py-2 px-4 text-center">${item.price}</td>
+                  <td className="py-2 px-4 text-center">{item.quantity}</td>
+                  <td className="py-2 px-4 text-center">
+                    <button
+                      onClick={() => removeHandler(item.idMeal)}
+                      className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="text-center py-4 text-gray-500">
+                  Your cart is empty.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

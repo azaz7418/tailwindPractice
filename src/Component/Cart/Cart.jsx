@@ -1,14 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../Redux/feature/cartSlice";
-
+import { counter, removeFromCart } from "../../Redux/feature/cartSlice";
+// import { useState } from "react";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Cart = () => {
+  // const [quantity, setQuantity] = useState(1);
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const removeHandler=(id)=>{
-    dispatch(removeFromCart(id))
-  }
+  const incrementHandler = (idMeal) => {
+  dispatch(counter(idMeal))
+  };
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
@@ -16,7 +21,7 @@ const Cart = () => {
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
             <tr className="bg-gray-200 text-gray-700 uppercase text-sm">
-              <th className="py-2 px-4">Image</th>
+              <th className="py-2 px-4">Product</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Price</th>
               <th className="py-2 px-4">Quantity</th>
@@ -28,15 +33,19 @@ const Cart = () => {
               cartItems.map((item, index) => (
                 <tr key={index} className="border-b">
                   <td className="py-2 px-4 text-center">
-                    <img
-                      src={item.strMealThumb}
-                      alt={item.strMeal}
-                      className="w-16 h-16 rounded-md mx-auto"
-                    />
+                    <img src={item.strMealThumb} alt={item.strMeal} className="w-16 h-16 rounded-md mx-auto" />
                   </td>
                   <td className="py-2 px-4 text-center">{item.strMeal}</td>
                   <td className="py-2 px-4 text-center">${item.price}</td>
-                  <td className="py-2 px-4 text-center">{item.quantity}</td>
+                  <td className="py-2 px-4 text-center grid grid-flow-col items-center justify-center gap-5">
+                    <span onClick={() => incrementHandler(item.idMeal)}>
+                      <FaPlus />
+                    </span>
+                    <span>0</span>
+                    <span>
+                      <FaMinus />
+                    </span>
+                  </td>
                   <td className="py-2 px-4 text-center">
                     <button
                       onClick={() => removeHandler(item.idMeal)}

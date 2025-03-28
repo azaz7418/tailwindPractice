@@ -20,11 +20,15 @@ const cartSlice = createSlice({
         state.items.push(action.payload);
       }
     },
+
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.idMeal !== action.payload);
     },
+    counter:(state, action)=>{
+
+    }
   },
 });
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, counter } = cartSlice.actions;
 const cartReducer = cartSlice.reducer;
 export default cartReducer;

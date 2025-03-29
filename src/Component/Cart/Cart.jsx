@@ -1,15 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { counter, removeFromCart } from "../../Redux/feature/cartSlice";
-// import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Cart = () => {
-  // const [quantity, setQuantity] = useState(1);
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
   const incrementHandler = (idMeal) => {
-  dispatch(counter(idMeal))
+    dispatch(counter(idMeal));
   };
   const removeHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -20,7 +18,7 @@ const Cart = () => {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-md rounded-lg">
           <thead>
-            <tr className="bg-gray-200 text-gray-700 uppercase text-sm">
+            <tr className="bg-gray-200 text-gray-700 text-sm">
               <th className="py-2 px-4">Product</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Price</th>

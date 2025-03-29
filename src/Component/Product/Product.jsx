@@ -12,6 +12,7 @@ const Product = () => {
     staleTime: 60000,
   });
 
+  console.log(data);
   
 
   if (isLoading) {

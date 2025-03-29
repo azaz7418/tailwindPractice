@@ -5,6 +5,7 @@ import Product from "./Component/Product/Product";
 import Home from "./Component/Home/Home";
 import CountryProduct from "./Component/CountryProduct/CountryProduct";
 import Cart from "./Component/Cart/Cart";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,7 +35,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} >
+      <Toaster />
+      </RouterProvider>
     </>
   );
 }

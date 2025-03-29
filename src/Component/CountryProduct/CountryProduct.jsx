@@ -4,7 +4,8 @@ import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../../Redux/feature/cartSlice";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const CountryProduct = () => {
   const { name } = useParams();
@@ -24,12 +25,13 @@ const CountryProduct = () => {
   const handleAddToCart = (item) => {
     // Dispatch addToCart action with the item details
     dispatch(addToCart(item));
-    Swal.fire({
-      title: "Added to Cart!",
-      text: `${item.strMeal} has been added to your cart.`,
-      icon: "success",
-      showConfirmButton: false,
-      timer: 1000, // Auto close after 1.5 seconds
+    toast.success(`${item.strMeal} has been added to your cart.`, {
+      position: "center",
+      duration: 1000,
+      style: {
+        width: "300px",
+        fontSize: "14px",
+      },
     });
   };
 

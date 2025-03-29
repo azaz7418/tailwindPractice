@@ -26,11 +26,12 @@ const CountryProduct = () => {
     // Dispatch addToCart action with the item details
     dispatch(addToCart(item));
     toast.success(`${item.strMeal} has been added to your cart.`, {
-      position: "center",
+      position: "top",
       duration: 1000,
       style: {
         width: "300px",
         fontSize: "14px",
+        background:"black"
       },
     });
   };

@@ -24,9 +24,9 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.idMeal !== action.payload);
     },
-    counter:(state, action)=>{
-
-    }
+    counter: (state, action) => {
+      state = action.payload;
+    },
   },
 });
 export const { addToCart, removeFromCart, counter } = cartSlice.actions;

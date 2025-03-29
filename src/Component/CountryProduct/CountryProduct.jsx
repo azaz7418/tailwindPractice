@@ -6,8 +6,6 @@ import { useParams } from "react-router-dom";
 import { addToCart } from "../../Redux/feature/cartSlice";
 import Swal from "sweetalert2";
 
-
-// import "./CountryProduct.css";
 const CountryProduct = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
@@ -17,18 +15,11 @@ const CountryProduct = () => {
     return data.meals;
   };
 
-  const { data, isError, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["countryData", name],
     queryFn: getRandomMeal,
     staleTime: 5000,
   });
-  console.log({ name, data });
-  if (isLoading) {
-    return <>Loading... </>;
-  }
-  if (isError) {
-    return <>...Page Error...</>;
-  }
 
   const handleAddToCart = (item) => {
     // Dispatch addToCart action with the item details

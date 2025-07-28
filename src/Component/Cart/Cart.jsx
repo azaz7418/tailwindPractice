@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
 import { counter, removeFromCart } from "../../Redux/feature/cartSlice";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { useState } from "react";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  const [numberOfProduct, setNumberOfProduct] = useState(1);
   const dispatch = useDispatch();
 
-  const incrementHandler = (idMeal) => {
-    dispatch(counter(idMeal));
-  };
+  // const incrementHandler = (idMeal) => {
+  //   if (idMeal === cartItems.idMeal) {
+  //     setNumberOfProduct(numberOfProduct + 1);
+  //   }
+  //   // dispatch(counter({idMeal, numberOfProduct}));
+  // };
+  // const dicrementHandler = (idMeal) => {
+  //   if (idMeal === cartItems.idMeal) {
+  //     setNumberOfProduct(numberOfProduct - 1);
+  //   }
+  //   // dispatch(counter({idMeal, numberOfProduct}));
+  // };
   const removeHandler = (id) => {
     dispatch(removeFromCart(id));
   };
@@ -39,8 +50,8 @@ const Cart = () => {
                     <span onClick={() => incrementHandler(item.idMeal)}>
                       <FaPlus />
                     </span>
-                    <span>0</span>
-                    <span>
+                    <span>{numberOfProduct}</span>
+                    <span onClick={() => dicrementHandler(item.idMeal)}>
                       <FaMinus />
                     </span>
                   </td>

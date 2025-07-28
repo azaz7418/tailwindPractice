@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../../Redux/feature/cartSlice";
-// import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const CountryProduct = () => {

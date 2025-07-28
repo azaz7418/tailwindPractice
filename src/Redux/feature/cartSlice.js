@@ -12,7 +12,7 @@ const cartSlice = createSlice({
       const isExist = state.items.some((item) => item.idMeal === action.payload.idMeal);
 
       if (!isExist) {
-        state.items.push(action.payload);
+        state.items.push(action.payload, {counter: 1});
       }
     },
 

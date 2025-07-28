@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { counter, removeFromCart } from "../../Redux/feature/cartSlice";
+import { removeFromCart } from "../../Redux/feature/cartSlice";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { useState } from "react";
+// import { useState } from "react";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  const [numberOfProduct, setNumberOfProduct] = useState(1);
+  // const [numberOfProduct, setNumberOfProduct] = useState(1);
   const dispatch = useDispatch();
 
   // const incrementHandler = (idMeal) => {
@@ -25,18 +25,16 @@ const Cart = () => {
   };
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary-900">Shopping Cart</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg">
-          <thead>
-            <tr className="bg-gray-200 text-gray-700 text-sm">
-              <th className="py-2 px-4">Product</th>
-              <th className="py-2 px-4">Name</th>
-              <th className="py-2 px-4">Price</th>
-              <th className="py-2 px-4">Quantity</th>
-              <th className="py-2 px-4">Action</th>
-            </tr>
-          </thead>
+        <table className="min-w-full bg-primary-50 shadow-md rounded-lg">
+          <tr className="bg-primary-100 text-primary-800 text-sm">
+            <th className="py-2 px-4">Product</th>
+            <th className="py-2 px-4">Name</th>
+            <th className="py-2 px-4">Price</th>
+            <th className="py-2 px-4">Quantity</th>
+            <th className="py-2 px-4">Action</th>
+          </tr>
           <tbody>
             {cartItems.length > 0 ? (
               cartItems.map((item, index) => (
@@ -47,18 +45,22 @@ const Cart = () => {
                   <td className="py-2 px-4 text-center">{item.strMeal}</td>
                   <td className="py-2 px-4 text-center">${item.price}</td>
                   <td className="py-2 px-4 text-center grid grid-flow-col items-center justify-center gap-5">
-                    <span onClick={() => incrementHandler(item.idMeal)}>
+                    <span
+                    // onClick={() => incrementHandler(item.idMeal)}
+                    >
                       <FaPlus />
                     </span>
-                    <span>{numberOfProduct}</span>
-                    <span onClick={() => dicrementHandler(item.idMeal)}>
+                    <span>1</span>
+                    <span
+                    // onClick={() => dicrementHandler(item.idMeal)}
+                    >
                       <FaMinus />
                     </span>
                   </td>
                   <td className="py-2 px-4 text-center">
                     <button
                       onClick={() => removeHandler(item.idMeal)}
-                      className="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-red-700"
+                      className="bg-accent-500 hover:bg-accent-600 text-white px-4 py-1 rounded-md"
                     >
                       Remove
                     </button>

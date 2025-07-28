@@ -14,16 +14,17 @@ const Header = () => {
   const navItem = [
     { name: "Home", path: "/" },
     { name: "Product", path: "/product" },
-    { name: "Cart", path: "/cart" },
+    { name: "cart", path: "/cart" },
     { name: "About", path: "/about" },
   ];
 
   return (
-    <div className=" bg-gradient-to-r from-sky-800 to-slate-800 flex items-center justify-between p-5 mt-auto shadow-md z-10 top-0 sticky w-full ">
-      <div className=" font-bold text-white text-shadow text-4xl">Fooddy</div>
-      <div className=" flex  gap-8 text-zinc-500 text-xl">
+    <div className="bg-primary-800 flex items-center justify-between p-5 mt-auto shadow-md z-10 top-0 sticky w-full">
+      <div className="font-bold text-primary-50 text-shadow text-4xl">Fooddy</div>
+      <div className="flex gap-8 text-primary-200 text-xl">
         {navItem.map((item, index) => {
           return (
+            
             <NavLink
             key={index}
               className={({ isActive }) =>
@@ -33,7 +34,7 @@ const Header = () => {
               }
               to={item.path}
             >
-              {item.name}
+          {item.name}
             </NavLink>
           );
         })}

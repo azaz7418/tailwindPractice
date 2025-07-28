@@ -10,11 +10,13 @@ const getRandomMeal = async () => {
 };
 
 const Home = () => {
-  const queryClient = useQueryClient();
+
+  // const queryClient = useQueryClient();
+  
   const {
     data: countryName,
-    isLoading: countryLoading,
-    isError: countryError,
+    // isLoading: countryLoading,
+    // isError: countryError,
   } = useQuery({
     queryKey: ["country"],
     queryFn: getRandomMeal,
@@ -52,17 +54,18 @@ const Home = () => {
             style={{ backgroundImage: `url(${item.strMealThumb})` }}
             className="bg-cover bg-no-repeat brightness-75"
           >
-            <div className=" w-full backdrop-blur-md px-10 py-11 flex justify-between items-center overflow-hidden">
+            <div className="w-full backdrop-blur-md px-10 py-11 flex justify-between items-center overflow-hidden">
               <div className="">
-                <h1 className=" text-4xl font-bold text-slate-900">{item.strMeal}</h1>
-                <h2 className="text-slate-700 mt-2 ml-[2px]">
+                <h1 className="text-4xl font-bold text-primary-800">{item.strMeal}</h1>
+                <h2 className="text-primary-600 mt-2 ml-[2px]">
                   <span>{item.strArea} </span> || <span> {item.strCategory}</span>
                 </h2>
                 <div className="mt-2">
-                  <Link className=" bg-orange-500 rounded py-1 px-3" to={item.strYoutube}>Watch</Link>
+                  <Link className="bg-accent-500 hover:bg-accent-600 text-white rounded py-1 px-3 transition-colors" to={item.strYoutube}>
+                    Watch
+                  </Link>
                 </div>
               </div>
-              <img src={item.strMealThumb} className="h-[350px] align-middle rounded shadow-lg shadow-slate-700" />
             </div>
           </div>
         ))}
